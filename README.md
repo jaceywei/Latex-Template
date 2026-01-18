@@ -11,7 +11,8 @@ by Yanzhou Wei.
 3. 自定义数学宏，如用\R替换\mathbb{R}，简洁方便
 4. 既可以供论文等大型项目使用，也可以供平时小论文、笔记等使用
 
-# Empty Template可供小型项目使用（不分多个.tex），main.tex里面没有写任何内容
+# Empty Template可供小型项目使用（不分多个.tex）
+main.tex里面没有写任何内容，也注释掉了模版文件中添加参考文献的部分。
 
 # Instruction文件夹文件介绍：这是整个文件的说明，也是后期大型项目的模版
 + main.tex -- 主文件，如果引入新的tex文件，需要在此 \input{新文件}，例如写新chapter时
