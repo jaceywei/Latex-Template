@@ -1,12 +1,10 @@
 ## LaTex_Template
 
-This is a LaTex template used for daily study and note-taking.
-
 by **Yanzhou Wei**.
 
 ### Features
 
-1. 页面采用浅蓝色主题色排版，十分优雅
+1. 页面采用浅蓝色主题色排版，十分优雅（和elegentbook大致相同）
 2. 既可以供论文等大型项目使用，也可以供平时小论文、笔记等使用
 3. 自定义定义、定理、证明等数学环境
 4. 自定义数学宏，如用\R替换\mathbb{R}，告别冗长的 mathbb, mathcal.....
