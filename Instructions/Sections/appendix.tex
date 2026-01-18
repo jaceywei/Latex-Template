@@ -1,0 +1,45 @@
+\appendix
+
+\section{附录示例}
+这是一个附录。
+
+\section{引用示例}
+通过
+\begin{verbatim}
+	\cite{knuth1984tex}
+	\cite{lamport1994latex}
+\end{verbatim}
+来引用\cite{knuth1984tex}和\cite{lamport1994latex}，你需要提前在\texttt{ref.bib}中加入参考文献目录.
+
+\begin{verbatim}
+% refs.bib
+@book{lamport1994latex,
+	title     = {LaTeX: A Document Preparation System},
+	author    = {Leslie Lamport},
+	year      = {1994},
+	publisher = {Addison-Wesley}
+}
+
+@article{knuth1984tex,
+	title   = {The {TeX}book},
+	author  = {Donald E. Knuth},
+	journal = {Addison-Wesley},
+	year    = {1984}
+}
+\end{verbatim}
+
+如果你不需要引用参考文献，请\textbf{务必}注释掉\texttt{template.tex}中的下面几句。
+
+这在\texttt{Empty Template}文件夹中已经注释掉了。
+
+\begin{verbatim}
+% 文献引用
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+
+% 这个只有在overleaf中可以biber代替bibertex成为默认选项
+\addbibresource{Sections/refs.bib}  % 引入 refs.bib 文件
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+\end{verbatim}
+
+

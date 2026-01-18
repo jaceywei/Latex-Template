@@ -1,0 +1,102 @@
+\section{插图示例}
+
+\paragraph{说明}
+这里对latex图片插入功能做了打包，封装成了下面的函数：
+\begin{verbatim}
+% fig 函数：简约版
+% 参数结构：
+% #1: 图片路径（必选）
+% #2: 图片宽度（必选）
+% #3: 图片标题（必选）
+\NewDocumentCommand{\fig}{m m m}{%
+	\begin{figure}[htbp]  % 使用可选参数#4作为位置参数（默认htbp）
+		\centering
+		% 插入图片：必选参数#1=路径，#2=宽度
+		\includegraphics[width=#2\textwidth]{#1}
+		% 标题：可选参数#3，非空时才显示
+		\caption{#3}
+	\end{figure}
+}
+
+% figu 函数：完整版
+% 额外参数：
+% #4: figure位置参数（可选，默认htbp）
+% #5: 图片标签（可选，默认空）
+\NewDocumentCommand{\figu}{m m m O{htbp} O{}}{%
+	\begin{figure}[#4]  % 使用可选参数#4作为位置参数（默认htbp）
+		\centering
+		% 插入图片：必选参数#1=路径，#2=宽度
+		\includegraphics[width=#2\textwidth]{#1}
+		% 标题：可选参数#3，非空时才显示
+		\IfValueT{#3}{\caption{#3}}
+		% 标签：可选参数#5，非空时才生成（且仅当有标题时才加标签）
+		\IfValueT{#5}{%
+			\IfValueT{#3}{\label{fig:#5}}% 避免无标题却有标签的无效情况
+		}
+	\end{figure}
+}
+
+% minifig 函数：图片并排环境的简约版
+% 参数：
+% #1: 左侧图片路径
+% #2: 右侧图片路径
+% #3: 左侧minipage宽度
+% #4: 右侧minipage宽度
+% #5: 左侧图片标题
+% #6: 右侧图片标题
+
+\NewDocumentCommand{\minifig}{m m m m m m}{
+	\begin{figure}[htbp]
+		\centering
+		\begin{minipage}[t]{#3\textwidth}  % #3: 左侧minipage宽度
+			\centering
+			\includegraphics[width = 0.83\linewidth]{#1}  % #1: 左侧图片路径
+			\caption{#5}  % #5: 左侧图片标题
+		\end{minipage}
+		\begin{minipage}[t]{#4\textwidth}  % #4: 右侧minipage宽度
+			\centering
+			\includegraphics[width = 0.83\linewidth]{#2}  % #6: 右侧图片路径
+			\caption{#6}  % #5: 右侧图片标题
+		\end{minipage}
+	\end{figure}
+}
+
+% minifigure 环境：图片并排环境完整版
+% 额外参数：
+% #7: figure位置参数（默认htbp）
+% #8: 左侧图片标签（默认空）
+% #9: 右侧图片标签（默认空）
+
+\NewDocumentCommand{\minifigure}{m m m m m m O{htbp} O{} O{}}{
+	\begin{figure}[#7]  % #7: figure位置参数（默认htbp）
+		\centering
+		\begin{minipage}[t]{#3\textwidth}  % #3: 左侧minipage宽度
+			\centering
+			\includegraphics{#1}  % #1: 左侧图片路径
+			\caption{#5}  % #5: 左侧图片标题
+			\IfValueT{#8}{\label{fig:#8}}  % #8: 左侧标签（非空才生成）
+		\end{minipage}
+		\begin{minipage}[t]{#4\textwidth}  % #4: 右侧minipage宽度
+			\centering
+			\includegraphics{#2}  % #6: 右侧图片路径
+			\caption{#6}  % #5: 右侧图片标题
+			\IfValueT{#9}{\label{fig:#9}}  % #9: 右侧标签（非空才生成）
+		\end{minipage}
+	\end{figure}
+}
+\end{verbatim}
+
+下面是示例：
+\begin{verbatim}
+\fig{ustcblue}{0.8}{中国科学技术大学校徽}
+\minifig{ustcblue}{ustcblue}{0.4}{0.4}{中国科学技术大学校徽1}{中国科学技术大学校徽2}
+\end{verbatim}
+
+给出：
+
+\fig{ustcblue}{0.8}{中国科学技术大学校徽}
+\minifig{ustcblue}{ustcblue}{0.4}{0.4}{中国科学技术大学校徽1}{中国科学技术大学校徽2}
+
+
+
+\newpage

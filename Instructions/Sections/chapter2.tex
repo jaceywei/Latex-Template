@@ -1,0 +1,72 @@
+\section{代码与算法环境示例}
+
+\begin{verbatim}
+\begin{lstlisting}[language=Python, caption=Python 代码示例]
+	from math import acos
+	a = 3
+	b = 6
+	c = 7
+	A = acos((a*a+b*b-c*c)/(2*a*b));
+	B = acos((b*b+c*c-a*a)/(2*b*c));
+	C = acos((c*c+a*a-b*b)/(2*c*a));
+	print(A+B+C)
+\end{lstlisting}
+
+\begin{algorithm}[h]
+	\caption{Stochastic Gradient Descent (SGD) method}
+	\label{alg:EF}
+	\begin{algorithmic}[1]   % [1] 表示显示行号
+		
+		\Require 初始模型参数 $x_0$；学习率 $\eta$；节点集合 $\mathcal{N}$；迭代次数 $T$
+		\Ensure  最终模型参数 $x_T$
+		\For{$t = 0$ to $T-1$}
+		\For{each node $i \in \mathcal{N}$ in parallel}
+		\State 计算本地梯度 $g_{i,t} = \nabla F_i(x_t)$
+		\State 更新累积误差 $e_{i,t+1} = e_{i,t} + \eta g_{i,t}$
+		\State 量化梯度 $\tilde{g}_{i,t} = Q(e_{i,t+1})$   \Comment{$Q(\cdot)$ 为量化算子}
+		\State 更新误差 $e_{i,t+1} = e_{i,t+1} - \tilde{g}_{i,t}$
+		\EndFor
+		\State 聚合全局梯度 $\tilde{g}_t = \frac{1}{|\mathcal{N}|} \sum_{i \in \mathcal{N}} \tilde{g}_{i,t}$
+		\State 更新全局参数 $x_{t+1} = x_t - \tilde{g}_t$
+		\EndFor
+		
+	\end{algorithmic}
+\end{algorithm}
+
+\end{verbatim}
+
+给出代码与算法环境：
+
+\begin{lstlisting}[language=Python, caption=Python 代码示例]
+from math import acos
+a = 3
+b = 6
+c = 7
+A = acos((a*a+b*b-c*c)/(2*a*b));
+B = acos((b*b+c*c-a*a)/(2*b*c));
+C = acos((c*c+a*a-b*b)/(2*c*a));
+print(A+B+C)
+\end{lstlisting}
+
+\begin{algorithm}[h]
+	\caption{Stochastic Gradient Descent (SGD) method}
+	\label{alg:EF}
+	\begin{algorithmic}[1]   % [1] 表示显示行号
+
+		\Require 初始模型参数 $x_0$；学习率 $\eta$；节点集合 $\mathcal{N}$；迭代次数 $T$
+		\Ensure  最终模型参数 $x_T$
+		\For{$t = 0$ to $T-1$}
+		\For{each node $i \in \mathcal{N}$ in parallel}
+		\State 计算本地梯度 $g_{i,t} = \nabla F_i(x_t)$
+		\State 更新累积误差 $e_{i,t+1} = e_{i,t} + \eta g_{i,t}$
+		\State 量化梯度 $\tilde{g}_{i,t} = Q(e_{i,t+1})$   \Comment{$Q(\cdot)$ 为量化算子}
+		\State 更新误差 $e_{i,t+1} = e_{i,t+1} - \tilde{g}_{i,t}$
+		\EndFor
+		\State 聚合全局梯度 $\tilde{g}_t = \frac{1}{|\mathcal{N}|} \sum_{i \in \mathcal{N}} \tilde{g}_{i,t}$
+		\State 更新全局参数 $x_{t+1} = x_t - \tilde{g}_t$
+		\EndFor
+		
+	\end{algorithmic}
+\end{algorithm}
+
+\newpage

@@ -1,0 +1,24 @@
+% 引入模板配置
+% 注意是要加Sections因为是相对路径
+\input{Sections/template}
+
+% 章节可以拎出来部分编译，这样子速度更快
+% \includeonly{Sections/appendix}
+
+\begin{document}
+	
+% 引入 document.tex 作为文档内容
+\include{Sections/head}
+
+\include{Sections/chapter1}
+\include{Sections/chapter2}
+\include{Sections/chapter3}
+\include{Sections/chapter4}
+
+\include{Sections/appendix}
+
+% bibtex的一个bug导致必须要加这句话，否则点击参考文献会跳到其前一部分
+\phantomsection
+\include{Sections/references}
+
+\end{document}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TSXPROJECT>
+<TSXPROJECT>
+    <general>
+        <PROJECTNAME>MyPaper</PROJECTNAME>
+    </general>
+    <build>
+        <defaultBuildCmdIndex>4</defaultBuildCmdIndex>
+        <userBuildCommands>
+            <command>pdflatex -synctex=1 -interaction=nonstopmode %.tex</command>
+            <command>biber %</command>
+            <command>pdflatex -synctex=1 -interaction=nonstopmode %.tex</command>
+            <command>pdflatex -synctex=1 -interaction=nonstopmode %.tex</command>
+        </userBuildCommands>
+    </build>
+</TSXPROJECT>

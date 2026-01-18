@@ -1,0 +1,36 @@
+\contentsline {section}{\numberline {1}The Deep Ritz Method (2018)}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}基本想法}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}神经元构建}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}训练过程}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}推广}{3}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Physics-informed Neural Networks (2019)}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}连续时间模型}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}离散时间模型}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}从观测数据反推参数}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}离散时间模型}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Weak Adeversial Network (2020)}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}基本想法}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}寻找弱解函数族和测试函数族}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}定义损失函数}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}训练过程}{8}{subsection.3.4}%
+\contentsline {section}{\numberline {4}The Random Feature Method (2022)}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}基本想法}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}损失函数}{10}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Weak Random Feature Method (2024)}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}基本想法}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}损失函数}{12}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Local RNN with DG methods (2024)}{12}{section.6}%
+\contentsline {subsection}{\numberline {6.1}基本想法}{12}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}LRNN-C$^0$DG方法}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}LRNN-C$^1$DG方法}{15}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}含时LRNN-DG方法}{15}{subsection.6.4}%
+\contentsline {section}{\numberline {A}Runge-Kutta Methods}{16}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}一阶ODE}{16}{subsection.A.1}%
+\contentsline {paragraph}{第一步：初始坡度计算，即第1个坡度}{17}{paragraph*.2}%
+\contentsline {paragraph}{第二步：走半步的路程再计算一次坡度，得到第2个坡度}{17}{paragraph*.3}%
+\contentsline {paragraph}{第三步：在半步处再次更新坡度，得到第3个坡度}{17}{paragraph*.4}%
+\contentsline {paragraph}{第四步：走完一整步，得到第4个坡度}{18}{paragraph*.5}%
+\contentsline {paragraph}{加权平均来做决定}{18}{paragraph*.6}%
+\contentsline {paragraph}{为什么加权平均?}{18}{paragraph*.7}%
+\contentsline {subsection}{\numberline {A.2}发展型PDE}{18}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}隐式龙格-库塔方法}{19}{subsection.A.3}%

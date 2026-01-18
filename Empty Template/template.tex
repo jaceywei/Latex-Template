@@ -1,0 +1,387 @@
+% If you only want Biber for a single document, it is possible by addding a so-called "magic comment".
+% !TeX TXS-program:bibliography = txs:///biber
+
+% 最新版本documentclass
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+
+% 引入必要的包
+\usepackage{amsmath, amssymb, amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{fontawesome5}
+\usepackage{tocloft}
+\usepackage{algorithm}      % 浮动体环境
+\usepackage{algpseudocode}  % 伪代码风格
+\usepackage{stmaryrd}
+\usepackage{xparse}  % 支持灵活的参数定义，如可选参数）
+\usepackage{etoolbox}
+\usepackage[toc,page]{appendix}  % toc: 将附录加入目录；page: 每个附录单独一页（可选）
+
+% 文献引用
+% \usepackage[utf8]{inputenc}
+% \usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+
+% 这个只有在overleaf中可以biber代替bibertex成为默认选项
+% \addbibresource{Sections/refs.bib}  % 引入 refs.bib 文件
+% \hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+
+% 设置图片目录
+\graphicspath{{Figures/}}
+
+% 设置颜色常量
+\definecolor{greenblue}{RGB}{0,160,160} % 蓝绿色
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}  % 墨绿色
+\definecolor{darkblue}{RGB}{0,76,153} % 深蓝色
+\definecolor{orange}{RGB}{255,130,0} % 橙色
+\definecolor{purple}{RGB}{139,0,139}
+
+\definecolor{t1}{RGB}{65,113,199} % theme color 1
+\definecolor{t2}{RGB}{255,130,0} % theme color 2
+
+% 设置页面尺寸和边距
+\geometry{
+	left=2.5cm,
+	right=2.5cm,
+	top=2.5cm,
+	bottom=2.5cm,
+	headsep=10pt,
+	footskip=30pt
+}
+
+% 调整页眉高度（避免警告）
+\setlength{\headheight}{18.04524pt}
+\addtolength{\topmargin}{-0.0pt} % 微调顶部位置
+
+% 目录居中
+\renewcommand{\contentsname}{\makebox[\linewidth][c]{\color{t1}\bfseries\Large 目录}}
+
+% 修改目录的字体颜色为黑色
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,  % 将目录超链接设置为黑色
+	urlcolor=magenta,
+	citecolor=black,
+	pdfborder={0 0 0}
+}
+\renewcommand{\cfttoctitlefont}{\Large\bfseries} % 目录标题也加大（可选）
+
+% 可选：设置目录条目字体为 \large（比默认大一号）
+%\renewcommand{\cftsecfont}{\large}
+%\renewcommand{\cftsecpagefont}{\large}
+%\renewcommand{\cftsubsecfont}{\large}
+%\renewcommand{\cftsubsecpagefont}{\large}
+%\renewcommand{\cftsubsubsecfont}{\large}
+%\renewcommand{\cftsubsubsecpagefont}{\large}
+%\renewcommand{\cftaftertoctitle}{\hfill}
+
+
+% 自定义标题样式
+\titleformat{\section}
+  {\normalfont\centering\Large\bfseries\color{t1}}  % 一级标题
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{t1}} % 二级标题
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{t1}} % 三级标题
+  {\thesubsubsection}{1em}{}
+
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries\color{t1}} % 四级标题
+  {\theparagraph}{1em}{}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{t1}{\leftmark}}
+\fancyhead[R]{\textcolor{t1}{\thepage}}
+
+% 设置页眉线颜色和粗细
+\renewcommand{\headrule}{\color{t1}\hrule width\textwidth height 0.7pt \vskip 1mm}
+
+% 右下角个人信息
+%\fancyfoot[R]{\href{https://github.com/jaceywei}{\Jaceywei}}
+
+% 代码高亮设置
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true
+}
+
+
+% 定义itemize样式，将点点设置为t1
+\setlist[itemize]{label=\textcolor{t1}{\textbullet}}
+
+% 定义表的样式
+\captionsetup[table]{
+	name = {表},
+	labelfont = {color=t1, bf}
+}
+
+% 定义图的样式
+\captionsetup[figure]{
+	name = {图},
+	labelformat = simple,
+	labelfont = {color=t1, bf}
+}
+
+% 定义算法样式
+\DeclareCaptionLabelSeparator{t1on}{\textbf{\textcolor{t1}{: }}}
+
+% 让代码中关键字变成主题颜色
+% 保存原始 \textbf
+%\let\originaltextbf\textbf
+% 定义蓝色加粗（用原始 \textbf）
+%\newcommand{\themebf}[1]{\originaltextbf{\textcolor{t1}{#1}}}
+% 在 algorithmic 中启用
+%\AtBeginEnvironment{algorithmic}{\let\textbf\themebf}
+
+\captionsetup[algorithm]{
+	name = {算法},
+	labelformat = simple,
+	labelfont = {color=t1, bf},
+	labelsep = t1on  % 在编号后加冒号和空格
+}
+
+% 自定义 caption 格式：直接使用 \thelstlisting
+\DeclareCaptionFormat{lstcaption}{%
+	\textbf{\textcolor{t1}{代码~\thelstlisting}}%
+	\textbf{\textcolor{t1}{:}}%
+	\textcolor{black}{~#1#3} %#3 是 caption 内容
+}
+\captionsetup[lstlisting]{format=lstcaption, labelformat=empty}
+
+% 自定义 代码 样式
+\lstset{
+	basicstyle=\ttfamily,
+	frame=single,                     % 添加边框
+	framerule=0.4pt,                  % 边框粗细
+	rulecolor=\color{t1},           % 边框颜色为蓝色
+	captionpos=b,                     % 标题放在下方
+	numbers=none,                     % 去掉左边的灰色数字（行号）
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}},
+	escapeinside={\%*}{*)}
+}
+
+% 修改标题名称为“代码”，并加粗变蓝
+\renewcommand{\lstlistingname}{\textbf{\textcolor{t1}{代码}}}
+
+% 定义enumerate样式
+\setlist[enumerate]{label=\textcolor{t1}{\textbf{\arabic*.}}}
+
+% fig 函数：简约版
+% 参数结构：
+% #1: 图片路径（必选）
+% #2: 图片宽度（必选）
+% #3: 图片标题（必选）
+\NewDocumentCommand{\fig}{m m m}{%
+	\begin{figure}[htbp]  % 使用可选参数#4作为位置参数（默认htbp）
+		\centering
+		% 插入图片：必选参数#1=路径，#2=宽度
+		\includegraphics[width=#2\textwidth]{#1}
+		% 标题：可选参数#3，非空时才显示
+		\caption{#3}
+	\end{figure}
+}
+
+% figu 函数：完整版
+% 额外参数：
+% #4: figure位置参数（可选，默认htbp）
+% #5: 图片标签（可选，默认空）
+\NewDocumentCommand{\figu}{m m m O{htbp} O{}}{%
+	\begin{figure}[#4]  % 使用可选参数#4作为位置参数（默认htbp）
+		\centering
+		% 插入图片：必选参数#1=路径，#2=宽度
+		\includegraphics[width=#2\textwidth]{#1}
+		% 标题：可选参数#3，非空时才显示
+		\IfValueT{#3}{\caption{#3}}
+		% 标签：可选参数#5，非空时才生成（且仅当有标题时才加标签）
+		\IfValueT{#5}{%
+			\IfValueT{#3}{\label{fig:#5}}% 避免无标题却有标签的无效情况
+		}
+	\end{figure}
+}
+
+% minifig 函数：图片并排环境的简约版
+% 参数：
+% #1: 左侧图片路径
+% #2: 右侧图片路径
+% #3: 左侧minipage宽度
+% #4: 右侧minipage宽度
+% #5: 左侧图片标题
+% #6: 右侧图片标题
+
+\NewDocumentCommand{\minifig}{m m m m m m}{
+	\begin{figure}[htbp]
+		\centering
+		\begin{minipage}[t]{#3\textwidth}  % #3: 左侧minipage宽度
+			\centering
+			\includegraphics[width = 0.83\linewidth]{#1}  % #1: 左侧图片路径
+			\caption{#5}  % #5: 左侧图片标题
+		\end{minipage}
+		\begin{minipage}[t]{#4\textwidth}  % #4: 右侧minipage宽度
+			\centering
+			\includegraphics[width = 0.83\linewidth]{#2}  % #6: 右侧图片路径
+			\caption{#6}  % #5: 右侧图片标题
+		\end{minipage}
+	\end{figure}
+}
+
+% minifigure 环境：图片并排环境完整版
+% 额外参数：
+% #7: figure位置参数（默认htbp）
+% #8: 左侧图片标签（默认空）
+% #9: 右侧图片标签（默认空）
+
+\NewDocumentCommand{\minifigure}{m m m m m m O{htbp} O{} O{}}{
+	\begin{figure}[#7]  % #7: figure位置参数（默认htbp）
+		\centering
+		\begin{minipage}[t]{#3\textwidth}  % #3: 左侧minipage宽度
+			\centering
+			\includegraphics{#1}  % #1: 左侧图片路径
+			\caption{#5}  % #5: 左侧图片标题
+			\IfValueT{#8}{\label{fig:#8}}  % #8: 左侧标签（非空才生成）
+		\end{minipage}
+		\begin{minipage}[t]{#4\textwidth}  % #4: 右侧minipage宽度
+			\centering
+			\includegraphics{#2}  % #6: 右侧图片路径
+			\caption{#6}  % #5: 右侧图片标题
+			\IfValueT{#9}{\label{fig:#9}}  % #9: 右侧标签（非空才生成）
+		\end{minipage}
+	\end{figure}
+}
+
+% 注意会使原有的 \P 无法使用
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}  
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\p}{\partial}
+\newcommand{\n}{\nabla}
+\newcommand{\D}{\Delta}
+
+\newcommand{\rd}{\mathbb{R}^d}
+\newcommand{\rn}{\mathbb{R}^n}
+
+\newcommand{\add}[2]{\sum_{#1}^{#2}}
+\newcommand{\mul}[2]{\prod_{#1}^{#2}}
+
+% 注意会使原有的 \d{o} 功能无法使用
+\renewcommand{\d}{\,\mathrm{d}}
+
+% 代替了\bf \cal，这两个是过时的命令
+\newcommand{\bb}[1]{\mathbb{#1}}
+\renewcommand{\cal}[1]{\mathcal{#1}}
+\renewcommand{\bf}[1]{\mathbf{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+\newcommand{\ir}{\int_{\R}}
+\newcommand{\ird}{\int_{\R^d}}
+\newcommand{\irn}{\int_{\R^n}}
+\newcommand{\io}{\int_{\Omega}}
+\newcommand{\ipo}{\int_{\partial\Omega}}
+
+\newcommand{\po}{\partial\Omega}
+\newcommand{\om}{\Omega}
+
+% text 'in', \in already exist
+\newcommand{\tin}{\text{in }}
+\newcommand{\on}{\text{on }}
+\newcommand{\as}{\text{as }}
+\newcommand{\for}{\text{for }}
+\newcommand{\dist}{\text{dist }}
+\newcommand{\vol}{\text{vol}\,}
+\newcommand{\iid}{\text{ i.i.d. }}
+\newcommand{\var}{\text{Var}}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\vphi}{\varphi}
+
+% 跳跃算子 [[ ]]
+\newcommand{\jump}[1]{\left\llbracket #1 \right\rrbracket }
+% 角括号 < >
+\providecommand{\angle}[1]{\langle #1 \rangle }
+% 范数 || ||
+\providecommand{\norm}[1]{\left\| #1 \right\| }
+% 绝对值 | |
+\providecommand{\abs}[1]{\left| #1 \right| }
+% 小括号 ( )
+\providecommand{\pare}[1]{\left( #1 \right)}
+
+% before upper={\setlength{\parindent}{0em}}, 用于删除所有缩进
+% 如需在盒子的段首空两格，可删除before upper={\setlength{\parindent}{0em}},并在每个盒子中加入如下选项：
+%	before upper={%
+%	\everypar{\hspace*{2em}\everypar{}}% 每段开头加 2em 空白
+%	\noindent\ignorespaces
+%},
+
+% 定义共享计数器（基于 section）
+\newcounter{sharedthm}[section]
+\renewcommand{\thesharedthm}{\thesection.\arabic{sharedthm}}
+
+% 简约样式
+
+% 证明环境 color = orange
+\newenvironment{pf}{
+	\par\noindent\textcolor{t2}{\textbf{Proof}}\quad
+	\ignorespaces
+}{
+	\qed\par
+}
+
+% Remark环境
+\newenvironment{rmk}{
+	\par\noindent\textcolor{t2}{\textbf{注}}\quad
+	\ignorespaces
+}
+
+\newtheoremstyle{colored}%
+{}{}% 间距
+{\itshape}{}% 正文斜体
+{\color{t1}\bfseries}{}% 标题：t1 + 加粗
+{ }% 分隔符
+{}% 后续
+
+\theoremstyle{colored}
+
+\newtheorem{thm}{定理}[section]   % 主计数器
+\newtheorem{defi}[thm]{定义}       % 共享计数器
+\newtheorem{lem}[thm]{引理}
+\newtheorem{cor}[thm]{推论}
+\newtheorem{prop}[thm]{命题}
+\newtheorem{prob}{问题}[section]
+\newtheorem{ex}{练习}[section]
+\newtheorem{eg}[thm]{例}
+
+% ========== 封装带 {标题}{标签} 的星号版本 ==========
+\newenvironment{thm*}[2]{\begin{thm}[#1]\label{#2}}{\end{thm}}
+\newenvironment{defi*}[2]{\begin{defi}[#1]\label{#2}}{\end{defi}}
+\newenvironment{lem*}[2]{\begin{lem}[#1]\label{#2}}{\end{lem}}
+\newenvironment{cor*}[2]{\begin{cor}[#1]\label{#2}}{\end{cor}}
+\newenvironment{prob*}[2]{\begin{prob}[#1]\label{#2}}{\end{prob}}
+\newenvironment{prop*}[2]{\begin{prop}[#1]\label{#2}}{\end{prop}}
+\newenvironment{ex*}[2]{\begin{ex}[#1]\label{#2}}{\end{ex}}
+\newenvironment{eg*}[2]{\begin{eg}[#1]\label{#2}}{\end{eg}}

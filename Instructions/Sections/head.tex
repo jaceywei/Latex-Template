@@ -1,0 +1,48 @@
+% document.tex
+\thispagestyle{empty} % 取消页眉
+
+% 定义颜色
+\definecolor{teal}{rgb}{0.0, 0.8, 0.7}
+\definecolor{darkgray}{rgb}{0.3, 0.3, 0.3}
+\definecolor{redtext}{rgb}{1.0, 0.0, 0.0}
+
+% 设置章节样式
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{black}}
+{\chaptertitlename\ \thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+% 去掉页眉页脚
+\thispagestyle{empty}
+
+% 开始文档
+	
+% 封面页
+% 封面页
+	
+\begin{center}
+	
+	% 标题区域
+	\vspace{1cm}
+	{\fontsize{26}{24}\selectfont\bfseries An Elegant \LaTeX\ Template for Articles}\\[3em]
+	{\fontsize{22}{16}\selectfont\bfseries Yanzhou Wei}\\[3em]
+	{\fontsize{18}{16}\selectfont\bfseries \today}\\[3em]
+	{\fontsize{18}{16}\selectfont\bfseries 南七技校}\\[3em]
+
+	
+	\vspace{6em}
+	
+	 \begin{minipage}{0.35\linewidth}
+		\includegraphics[width=\linewidth]{headfig.jpg}
+		\vspace{0.5em}
+	\end{minipage}
+	
+	\vfill
+	\textcolor{redtext}{\textit{Last Update: Jan 18, 2026}}
+\end{center}
+
+\newpage
+
+\tableofcontents
+\newpage
+
