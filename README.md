@@ -13,6 +13,7 @@ by Yanzhou Wei.
 
 ### Empty Template
 可供小型项目使用（不分多个.tex）
+
 main.tex里面没有写任何内容，也注释掉了模版文件中添加参考文献的部分。
 
 ### Instruction文件夹
