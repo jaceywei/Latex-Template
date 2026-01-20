@@ -1,18 +1,19 @@
 \contentsline {section}{\numberline {1}正文示例章节}{3}{section.1}%
+\contentsline {paragraph}{写在最前面}{3}{paragraph*.1}%
 \contentsline {subsection}{\numberline {1.1}子章节标题}{3}{subsection.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.1}子子章节标题}{3}{subsubsection.1.1.1}%
-\contentsline {paragraph}{段落}{3}{paragraph*.1}%
+\contentsline {paragraph}{段落}{3}{paragraph*.2}%
 \contentsline {subsection}{\numberline {1.2}列表示例}{4}{subsection.1.2}%
-\contentsline {paragraph}{无序列表}{4}{paragraph*.2}%
-\contentsline {paragraph}{有序列表}{4}{paragraph*.3}%
+\contentsline {paragraph}{无序列表}{4}{paragraph*.3}%
+\contentsline {paragraph}{有序列表}{4}{paragraph*.4}%
 \contentsline {subsection}{\numberline {1.3}表格示例}{4}{subsection.1.3}%
 \contentsline {section}{\numberline {2}代码与算法环境示例}{5}{section.2}%
 \contentsline {section}{\numberline {3}插图示例}{7}{section.3}%
-\contentsline {paragraph}{说明}{7}{paragraph*.5}%
+\contentsline {paragraph}{说明}{7}{paragraph*.6}%
 \contentsline {section}{\numberline {4}数学环境示例}{11}{section.4}%
-\contentsline {paragraph}{说明}{11}{paragraph*.8}%
+\contentsline {paragraph}{说明}{11}{paragraph*.9}%
 \contentsline {section}{\numberline {5}数学宏（newcommand）}{13}{section.5}%
-\contentsline {paragraph}{说明}{13}{paragraph*.9}%
+\contentsline {paragraph}{说明}{13}{paragraph*.10}%
 \contentsline {section}{\numberline {A}附录示例}{16}{appendix.A}%
 \contentsline {section}{\numberline {B}引用示例}{16}{appendix.B}%
-\contentsline {section}{参考文献}{17}{section*.10}%
+\contentsline {section}{参考文献}{17}{section*.11}%

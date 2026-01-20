@@ -1,7 +1,8 @@
 \section{插图示例}
 
 \paragraph{说明}
-这里对latex图片插入功能做了打包，封装成了下面的函数：
+这里对LaTeX图片插入功能做了打包，封装成了下面的 \texttt{fig, figu, minifig, minifigure} 函数，分别用于插入单张图片和并排图片，并对两个功能分别制作了简约版和完整版，以下是\texttt{template.tex}中的代码：
+
 \begin{verbatim}
 % fig 函数：简约版
 % 参数结构：
@@ -61,7 +62,7 @@
 	\end{figure}
 }
 
-% minifigure 环境：图片并排环境完整版
+% minifigure 函数：图片并排环境完整版
 % 额外参数：
 % #7: figure位置参数（默认htbp）
 % #8: 左侧图片标签（默认空）
@@ -78,8 +79,8 @@
 		\end{minipage}
 		\begin{minipage}[t]{#4\textwidth}  % #4: 右侧minipage宽度
 			\centering
-			\includegraphics{#2}  % #6: 右侧图片路径
-			\caption{#6}  % #5: 右侧图片标题
+			\includegraphics{#2}  % #2: 右侧图片路径
+			\caption{#6}  % #6: 右侧图片标题
 			\IfValueT{#9}{\label{fig:#9}}  % #9: 右侧标签（非空才生成）
 		\end{minipage}
 	\end{figure}

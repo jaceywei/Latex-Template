@@ -4,48 +4,64 @@
 % 最新版本documentclass
 \documentclass[UTF8,a4paper,12pt]{ctexart}
 
-% 引入必要的包
+% ===================== 数学公式/符号/定理环境核心包 =====================
+% 数学公式基础：amsmath是LaTeX数学排版的核心，提供对齐环境(align)、分式、矩阵等；
+% amssymb/amsfonts补充AMS系列数学符号（如ℕ/ℝ/ℤ、特殊箭头、集合符号等）；
+% amsthm用于定义定理、引理、证明等结构化定理环境（如\newtheorem{theorem}{定理}）
 \usepackage{amsmath, amssymb, amsfonts,amsthm}
+
+% ===================== 基础排版与格式控制 =====================
+% 图片插入：支持插入png/jpg/pdf等格式图片，核心命令\includegraphics，可缩放/裁剪
 \usepackage{graphicx}
+% 页面布局：自定义页边距、纸张大小（如\geometry{a4paper, left=2cm, right=2cm}）
 \usepackage{geometry}
+% 自定义页眉页脚：替代默认页眉页脚，支持奇偶页不同样式（如fancyhead/fancyfoot）
 \usepackage{fancyhdr}
+% 章节标题样式：自定义\section/\subsection等标题的格式（字体、间距、编号等）
 \usepackage{titlesec}
+% 超链接与交叉引用：生成可点击的目录、公式/图表引用、URL链接，支持自定义链接颜色
 \usepackage{hyperref}
+% 颜色控制：定义/使用颜色
 \usepackage{xcolor}
-\usepackage{listings}
+% 表格美化：制作表格
 \usepackage{booktabs}
+% 图表标题：自定义图表标题样式（如字号、位置、编号），支持子图标题（\subcaption）
 \usepackage{caption}
+% 列表环境增强：自定义itemize/enumerate/description列表的缩进、编号样式（如[label=(\alph*)]）
 \usepackage{enumitem}
-\usepackage{eso-pic}
-\usepackage{fontawesome5}
+% 目录样式控制：自定义目录(TOC)、列表(List of Figures/Tables)的格式（缩进、编号、间距）
 \usepackage{tocloft}
-\usepackage{algorithm}      % 浮动体环境
-\usepackage{algpseudocode}  % 伪代码风格
-\usepackage{stmaryrd}
-\usepackage{xparse}  % 支持灵活的参数定义，如可选参数）
+% 附录设置：[toc]将附录加入目录，[page]让每个附录单独分页，简化附录排版
+\usepackage[toc,page]{appendix}
+
+% ===================== 特殊功能包 =====================
+% 代码高亮：插入源代码（如Python/LaTeX），支持语法高亮、行号、代码样式自定义
+\usepackage{listings}
+% 页面任意位置绘图：在页面背景/前景添加水印、logo、文字（突破正文区域限制）
+\usepackage{eso-pic}
+% 特殊数学符号：补充stmaryrd系列符号（如\llbracket/\rrbracket双括号）
+\usepackage{xparse}
+% 宏包/命令扩展：提供定理自动编号
 \usepackage{etoolbox}
-\usepackage[toc,page]{appendix}  % toc: 将附录加入目录；page: 每个附录单独一页（可选）
 
-% 文献引用
-% \usepackage[utf8]{inputenc}
-% \usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+% ===================== 算法/伪代码 =====================
+% 算法浮动体：提供algorithm环境，将伪代码作为浮动体（类似figure/table）
+\usepackage{algorithm}
+% 伪代码样式：提供algpseudocode环境，编写结构化伪代码（If/For/While/Function等）
+\usepackage{algpseudocode}
 
-% 这个只有在overleaf中可以biber代替bibertex成为默认选项
-% \addbibresource{Sections/refs.bib}  % 引入 refs.bib 文件
-% \hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+%% 文献引用
+%\usepackage[utf8]{inputenc}
+%\usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+%
+%% 这个只有在overleaf中可以biber代替bibertex成为默认选项
+%\addbibresource{Sections/refs.bib}  % 引入 refs.bib 文件
+%\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
 
 % 设置图片目录
 \graphicspath{{Figures/}}
 
-% 设置颜色常量
-\definecolor{greenblue}{RGB}{0,160,160} % 蓝绿色
-\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}  % 墨绿色
-\definecolor{darkblue}{RGB}{0,76,153} % 深蓝色
-\definecolor{orange}{RGB}{255,130,0} % 橙色
-\definecolor{purple}{RGB}{139,0,139}
-
-\definecolor{t1}{RGB}{65,113,199} % theme color 1
-\definecolor{t2}{RGB}{255,130,0} % theme color 2
+\definecolor{t1}{RGB}{65,113,199} % 主题色
 
 % 设置页面尺寸和边距
 \geometry{
@@ -109,9 +125,6 @@
 
 % 设置页眉线颜色和粗细
 \renewcommand{\headrule}{\color{t1}\hrule width\textwidth height 0.7pt \vskip 1mm}
-
-% 右下角个人信息
-%\fancyfoot[R]{\href{https://github.com/jaceywei}{\Jaceywei}}
 
 % 代码高亮设置
 \lstset{
@@ -247,7 +260,7 @@
 	\end{figure}
 }
 
-% minifigure 环境：图片并排环境完整版
+% minifigure 函数：图片并排环境完整版
 % 额外参数：
 % #7: figure位置参数（默认htbp）
 % #8: 左侧图片标签（默认空）
@@ -305,7 +318,7 @@
 \newcommand{\ipo}{\int_{\partial\Omega}}
 
 \newcommand{\po}{\partial\Omega}
-\newcommand{\om}{\Omega}
+\newcommand{\Om}{\Omega}
 
 % text 'in', \in already exist
 \newcommand{\tin}{\text{in }}
@@ -320,8 +333,6 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\vphi}{\varphi}
 
-% 跳跃算子 [[ ]]
-\newcommand{\jump}[1]{\left\llbracket #1 \right\rrbracket }
 % 角括号 < >
 \providecommand{\angle}[1]{\langle #1 \rangle }
 % 范数 || ||
@@ -331,12 +342,7 @@
 % 小括号 ( )
 \providecommand{\pare}[1]{\left( #1 \right)}
 
-% before upper={\setlength{\parindent}{0em}}, 用于删除所有缩进
-% 如需在盒子的段首空两格，可删除before upper={\setlength{\parindent}{0em}},并在每个盒子中加入如下选项：
-%	before upper={%
-%	\everypar{\hspace*{2em}\everypar{}}% 每段开头加 2em 空白
-%	\noindent\ignorespaces
-%},
+\definecolor{t2}{RGB}{255,130,0} % “证明”和“注”字的颜色
 
 % 定义共享计数器（基于 section）
 \newcounter{sharedthm}[section]
@@ -346,7 +352,7 @@
 
 % 证明环境 color = orange
 \newenvironment{pf}{
-	\par\noindent\textcolor{t2}{\textbf{Proof}}\quad
+	\par\noindent\textcolor{t2}{\textbf{证明}}\quad
 	\ignorespaces
 }{
 	\qed\par

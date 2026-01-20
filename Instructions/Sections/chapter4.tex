@@ -3,7 +3,7 @@
 \paragraph{说明}
 \begin{enumerate}
 	\item 提供了\textit{定理，定义，引理，推论，命题，问题，练习，例，注}环境
-	\item 每种定理打*号的是完整版，可以添加定理的名字和标签
+	\item 每种定理打*号的是完整版，可以添加定理的名字和标签，以下是\texttt{template.tex}中定义定理环境的代码：
 	\begin{verbatim}
 		\newenvironment{thm*}[2]{\begin{thm}[#1]\label{#2}}{\end{thm}}
 	\end{verbatim}
@@ -16,10 +16,9 @@
 \end{defi*}
 
 \begin{pf}
-	两种模版的引用方式不太相同。
-	
-	由~\ref{def1}，显然成立。
+	定理引用示例：由~\ref{def1}，显然成立。
 \end{pf}
+
 \end{verbatim}
 
 给出：
@@ -29,14 +28,12 @@
 \end{defi*}
 
 \begin{pf}
-	两种模版的引用方式不太相同。
-	
-	由~\ref{def1}，显然成立。
+	定理引用示例：由~\ref{def1}，显然成立。
 \end{pf}
 
 \vspace{1em}
 
-下面类似，不再写源代码：
+下面类似，请自行查看\texttt{chapter4.tex}中的源代码：
 
 \begin{thm*}{Lorem ipsum}{}
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
@@ -84,26 +81,26 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
 \section{数学宏（newcommand）}
 
 \paragraph{说明}
-由于\texttt{mathbb} \texttt{mathcal} 等输入较为麻烦，所以采用宏替换的方式有效减少输入量。
+由于 \texttt{mathbb} \texttt{mathcal} 等输入较为麻烦，所以采用宏替换的方式有效减少输入量。
 
 示例：
 \begin{verbatim}
 	\[ \mul{j=1}{n} y_j \]
-	\[ \ipo \jump{\n f(\bs{x})} \d \bs{x} \]
+	\[ \ipo \n f(\bs{x}) \d \bs{x} \]
 	\[ \E(X) = 0, \var(X) = 1, X_1 \cdots X_n \iid X. \]
-	\[ \norm{\add{i=1}{n} f_i}_{L^2(\om)} \]
+	\[ \norm{\add{i=1}{n} \lambda_i f_i}_{L^2(\Om)} \]
 	\[ \rd \ \rn \]
 \end{verbatim}
 
 给出：
 
 \[ \mul{j=1}{n} y_j \]
-\[ \ipo \jump{\n f(\bs{x})} \d \bs{x} \]
+\[ \ipo \n f(\bs{x}) \d \bs{x} \]
 \[ \E(X) = 0, \var(X) = 1, X_1 \cdots X_n \iid X. \]
-\[ \norm{\add{i=1}{n} \lambda_i f_i}_{L^2(\om)} \]
+\[ \norm{\add{i=1}{n} \lambda_i f_i}_{L^2(\Om)} \]
 \[ \rd \ \rn \]
 
-以下是源代码：
+以下是 \texttt{template.tex} 中的源代码：
 
 \begin{verbatim}
 % 注意会使原有的 \P 无法使用
@@ -140,7 +137,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
 \newcommand{\ipo}{\int_{\partial\Omega}}
 
 \newcommand{\po}{\partial\Omega}
-\newcommand{\om}{\Omega}
+\newcommand{\Om}{\Omega}
 
 % text 'in', \in already exist
 \newcommand{\tin}{\text{in }}
@@ -155,8 +152,6 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
 \newcommand{\eps}{\varepsilon}
 \newcommand{\vphi}{\varphi}
 
-% 跳跃算子 [[ ]]
-\providecommand{\jump}[1]{\left\llbracket #1 \right\rrbracket }
 % 角括号 < >
 \providecommand{\angle}[1]{\langle #1 \rangle }
 % 范数 || ||
