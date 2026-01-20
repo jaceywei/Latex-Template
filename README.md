@@ -10,6 +10,8 @@ by **Yanzhou Wei**.
 4. 自定义数学宏，如用\R替换\mathbb{R}，告别冗长的 mathbb, mathcal.....
 5. 封装插入图片环境为函数\fig和\minifig，告别latex插入图片的烦扰
 
+**对模版更详细的介绍请参见https://zhuanlan.zhihu.com/p/1997082556697433063**
+
 ### Empty Template
 可供小型项目使用（不分多个.tex）
 
